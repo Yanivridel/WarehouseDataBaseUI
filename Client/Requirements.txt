@@ -29,3 +29,11 @@ ReceiveSupplies("קליטת אספקה למלאי"){}
 ItemHandling("טיפול בפריטים"){}
 
 GetItems("שאילתת פריטים"){}
+
+GetExOrders("שאילתת הזמנות לביצוע"){}
+
+GetRegularClients("שאילתת לקוחות קבועים"){}
+
+GetTransactions("שאילתת חשבות")
+
+GetUnfulfilledOrders("שאילתת הזמנות שלא מומשו")
