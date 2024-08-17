@@ -6,3 +6,41 @@
     --buttonBackground: #b2b2b2;
     --buttonBorder: #676e6f;
 }
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form {
+    background-color: var(--formBackground);
+    border: 2px solid var(--formBorder);
+    margin: 2rem auto;
+    width: 50%;
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 1fr 8fr 1fr;
+
+    h2 {
+        text-align: center;
+    }
+
+    .buttons {
+        grid-row: 3;
+        display: grid;
+        grid-template-columns: 1fr 6fr;
+
+        button {
+            grid-column: 2;
+            background-color: var(--buttonBackground);
+            border: 2px solid var(--buttonBorder);
+            margin: 10px;
+        }
+
+        .mainButtons {
+            display: flex;
+            justify-content: right;
+        }
+    }
+}
