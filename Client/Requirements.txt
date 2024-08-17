@@ -1,0 +1,31 @@
+CreateOrder("קליטת הזמנה")
+
+UpdateOrder("עדכון/ביטול הזמנה")
+
+UpdateRegularOrder("עדכון/ביטול הזמנה קבועה")
+
+Payment("תשלום")
+
+RegisterRegularClient("קליטת לקוח קבוע")
+
+CreateRegularOrder("קליטת הזמנה קבועה")
+
+UpdateRegularClient("עדכון פרטי לקוח קבוע){
+    handleOrdersClick(opens the RegularClientRegularOrders)
+    RegularClientRegularOrders("הזמנות לקוח"){
+        RegularOrdersList
+        handleOrderItemDoubleClick(opens the UpdateRegularOrder window)
+    } 
+}
+
+
+Shipments("משלוחים"){
+    handleShipmentDoubleClick(opens the orderDetails window)
+    orderDetails("פרטי הזמנה"){}
+}
+
+ReceiveSupplies("קליטת אספקה למלאי"){}
+
+ItemHandling("טיפול בפריטים"){}
+
+GetItems("שאילתת פריטים"){}
