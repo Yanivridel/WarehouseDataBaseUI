@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap'); /* HEBREW FONT */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400..700&family=Varela+Round&display=swap'); /* ENGLISH FONT */
 
 :root{
     --formBackground: #bae0e3;
@@ -7,7 +8,6 @@
     --outputBackground: #b3b5b5;
     --buttonBackground: #b2b2b2;
     --buttonBorder: #676e6f;
-    
     /* Header Background*/
     --darkBlue: #345ca2;  
     --lightBlue: #426ec0;
@@ -38,9 +38,6 @@ html {
 }
 
 
-
-
-
 /* HEADER */
 #headerNav {
     background: linear-gradient(to right, var(--darkBlue) 20%, var(--lightBlue) 50%, var(--darkBlue) 100%);
@@ -50,34 +47,54 @@ html {
     .container {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 3fr 2fr 2fr;
+        max-width: 1050px;
+        margin: 0 auto;
 
         .brandName {
             font-size: 1.5rem;
+            text-align: center;
+            h1 a, h2 a {
+                color: #ca8606;
+            }
+            h2 a {
+                font-size: 2rem;
+            }
+        }
+        
+        .logoImg {
+            margin-left: auto; /* Push to the right */
         }
 
-        .navButtons {
-            grid-row: 2;
+        button {
+            background: linear-gradient(to bottom, var(--light-slate-blue) 20%, var(--light-royal-blue) 90%);
+            color: white;
+            font-weight: 700;
+            border: none;
+            border-radius: 2rem; 
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            padding: 0.7rem;
+            margin: 0.7rem 0.7rem;
+        }
+
+        button:hover{
+            background: linear-gradient(to bottom, var(--light-slate-blue) 20%, var(--purple) 90%);
+            transform: translateY(-2px);
+        }
+
+        .navButtonsRow2, .navButtonsRow3 {
             grid-column: 1 / -1; /* Take full row */
             display: flex;
             justify-content: space-around; /* EVEN SPACING */
-            margin: auto 0;
-
-            button {
-                background: linear-gradient(to bottom, var(--light-slate-blue) 20%, var(--light-royal-blue) 90%);
-                color: white;
-                font-weight: 700;
-                border: none;
-                border-radius: 2rem; 
-                cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.3s ease;
-                padding: 0.7rem;
-            }
-
-            button:hover{
-                background: linear-gradient(to bottom, var(--light-slate-blue) 20%, var(--purple) 90%);
-                transform: translateY(-2px);
-            }
+            margin-top: 1rem;
+        }
+        .navButtonsRow2 {
+            grid-row: 2;
+        }
+        .navButtonsRow3 {
+            grid-row: 3;
+            padding: 0 12rem;
         }
     }
 }
