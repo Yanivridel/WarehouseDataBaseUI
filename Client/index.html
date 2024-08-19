@@ -66,13 +66,18 @@
         
         <div class="form" id="itemsQuery">
             <h2>שאילתת&nbsp;פריטים</h2>
+            <div class="inputArea">
+                קוד פריט:
+                <input id="itemsQueryInput"></input>
+            </div>
             <div class="dataArea">
-                <div class="inputArea">
-                    קוד פריט:
-                    <input id="itemsQueryInput"></input>
-                </div>
-                <table id="itemsTable">
-                    <tr class="tableHead"><th>%</th> <th>ת.אספקה</th> <th>תדירות</th> <th>מחיר</th> <th>קבועות</th> <th>שמורה</th> <th>בהמתנה</th> <th>במלאי</th> <th>תיאור</th> <th>קוד</th></ht></tr>
+                <table>
+                    <thead>
+                        <tr class="tableHead"><th>%</th> <th>ת.אספקה</th> <th>תדירות</th> <th>מחיר</th> <th>קבועות</th> <th>שמורה</th> <th>בהמתנה</th> <th>במלאי</th> <th>תיאור</th> <th>קוד</th></ht></tr>
+                    </thead>
+                    <tbody id="itemsTable">
+
+                    </tbody>
                 </table>
             </div>
             <div class="buttons">
@@ -87,6 +92,19 @@
 
         <div class="form" id="ordersQuery">
             <h2>שאילתת&nbsp;הזמנות&nbsp;לביצוע</h2>
+            <div class="inputArea">
+                סטטוס הזמנה:
+                <input id=""></input>
+                <br>
+                החל מתאריך:
+                <input></input>
+                <br>
+                עד תאריך:
+                <input></input>
+                <br>
+                מספר הזמנה:
+                <input></input>
+            </div>
             <div class="dataArea"></div>
             <div class="buttons">
                 <div class="exitDiv">

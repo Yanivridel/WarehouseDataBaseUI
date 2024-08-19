@@ -117,14 +117,14 @@ a {
     max-width: 600px; /* ADJUST LATER */
     padding: 1rem;
     display: grid;
-    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 3fr 8fr 1fr;
 
     h2 {
         text-align: center;
         font-size: 2.2rem;
     }
     .buttons {
-        grid-row: 3;
+        grid-row: 4;
         display: grid;
         grid-template-columns: 1fr 6fr;
 
@@ -182,7 +182,10 @@ table{
     padding: 2rem 0;
     width:100%;
 }
-
+#itemsTable{
+    max-height: 80px;
+    overflow-y: auto;
+}
 input {
     cursor: pointer;
     transition: background 0.3s;

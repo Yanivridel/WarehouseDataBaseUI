@@ -36,7 +36,7 @@ async function handleGetItemsClick() {
     const toDelete = _itemsTable.getElementsByTagName("tr");
     for(let i = toDelete.length - 1; i > 0; i--){
         const row = toDelete[i];
-        _itemsTable.removeChild(row);
+        //_itemsTable.removeChild(row);
     }
     
     const itemCode = _itemsQueryInput.value.trim();
