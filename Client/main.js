@@ -29,35 +29,20 @@ async function handleGetItemsClick() {
     const itemCode = _itemsQueryInput.value.trim();
     _itemsQueryInput.value = '';
     const dataArray = await getItems(parseInt(itemCode));
+
     if(dataArray[0]){
         for(let i = 0; i < dataArray.length; i++){
             const data = dataArray[i];
-            const arr = [];
-            const code = data.code;
-            arr[0] = code;
-            const desc = data.desc;
-            arr[1] = desc;
-            const available = data.available; 
-            arr[2] = available;
-            const waiting = data.waiting;
-            arr[3] = waiting;
-            const saved = data.saved;
-            arr[4] = saved;
-            const subscript = data.subscript;
-            arr[5] = subscript;
-            const unitPrice = data.unitPrice;
-            arr[6] = unitPrice;
-            const freq = data.freq;
-            arr[7] = freq;
-            const suppDate = data.suppDate;
-            arr[8] = suppDate;
-            const orderPercent = data.orderPercent;
-            arr[9] = orderPercent;
-
+            const arr = [data.Code,data.Desc,data.Available,data.Waiting,data.Saved,data.Subscript,
+                data.UnitPrice,data.Freq,data.SuppDate,data.OrderPercnt];
+            console.log(data,arr);
+            
             const row = document.createElement('tr'); 
-            for(let j = arr.length - 1; j >= 0; j++){
+            for(let j = arr.length - 1; j >= 0; j--){
                 const td = document.createElement('td');
-                td.textContent = arr[i];
+                console.log('arr[j]',arr[j]);
+                
+                td.textContent = arr[j];
                 row.appendChild(td);
             }
             _itemsTable.appendChild(row);
