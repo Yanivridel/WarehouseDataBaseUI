@@ -11,6 +11,7 @@
     /* Header Background*/
     --darkBlue: #345ca2;  
     --lightBlue: #426ec0;
+    --orange: #d89822;
     /* Header Buttons */
     --purple: hsl(263, 54%, 35%);
     --light-slate-blue: hsl(252, 100%, 67%); 
@@ -72,7 +73,7 @@ html {
             font-size: 1.5rem;
             text-align: center;
             h1 a, h2 a {
-                color: #ca8606;
+                color: var(--orange);
             }
             h2 a {
                 font-size: 2rem;
@@ -105,6 +106,7 @@ a {
 /* END HEADER */
 
 /* BODY */
+
 .form {
     background-color: var(--formBackground);
     border: 2px solid var(--formBorder);
@@ -141,6 +143,32 @@ a {
     }
 }
 
+#itemHandling .dataArea {
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr 2fr;
+    margin-bottom: 1rem;
+    #itemId, #itemQuant, #itemSupply {
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+
+    #action {
+        display: flex;
+        justify-content: flex-end;
+        
+        p, label {
+            font-size: 1.4rem;
+            margin: auto 0;
+            padding: 1rem;
+        }
+    }
+
+    #itemSupply {
+        border-bottom: 1px solid black;
+    }
+}
+
 #queriesOptions{
     .container{
         width: 50%;
@@ -153,6 +181,11 @@ a {
 table{
     padding: 2rem 0;
     width:100%;
+}
+
+input {
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 

@@ -1,8 +1,10 @@
 // General
 const serverPath = 'http://localhost:5000';
-const _createOrder = document.getElementById("createOrder");
 const _mainContainer = document.getElementById("mainContainer");
 
+//HeaderButtons
+const _createOrder = document.getElementById("createOrder");
+const _itemHandling = document.getElementById("itemHandling");
 // Queries
 const _queriesOptions = document.getElementById("queriesOptions");
 
@@ -14,6 +16,11 @@ const _ordersQuery = document.getElementById("ordersQuery");
 const _regularClientsQuery = document.getElementById("regularClientsQuery");
 const _accountsQuery = document.getElementById("accountsQuery");
 const _unfulfilledOrdersQuery = document.getElementById("unfulfilledOrdersQuery");
+
+function handleItemHandlingClick() {
+    hideAll();
+    _itemHandling.style.display = 'grid';
+}
 
 function handleQueriesClick(){
     hideAll();
@@ -41,42 +48,35 @@ async function handleGetItemsClick() {
             const data = dataArray[i];
             const arr = [data.Code,data.Desc,data.Available,data.Waiting,data.Saved,data.Subscript,
                 data.UnitPrice,data.Freq,data.SuppDate,data.OrderPercnt];
-            console.log(data,arr);
-            
             const row = document.createElement('tr');
-
             for(let j = arr.length - 1; j >= 0; j--){
                 const td = document.createElement('td');
-                console.log('arr[j]',arr[j]);
-                
                 td.textContent = arr[j];
                 row.appendChild(td);
             }
             _itemsTable.appendChild(row);
         }
     }
-    console.log(dataArray);
 }
-
 function handleOrdersClick(){
     hideAll();
     _queriesOptions.style.display = 'block';
-    _ordersQuery.style.display = 'block';
+    _ordersQuery.style.display = 'grid';
 }
 function handleRegularClientsClick(){
     hideAll();
     _queriesOptions.style.display = 'block';
-    _regularClientsQuery.style.display = 'block';
+    _regularClientsQuery.style.display = 'grid';
 }
 function handleAccountsClick(){
     hideAll();
     _queriesOptions.style.display = 'block';
-    _accountsQuery.style.display = 'block';
+    _accountsQuery.style.display = 'grid';
 }
 function handleUnfulfilledOrdersClick(){
     hideAll();
     _queriesOptions.style.display = 'block';
-    _unfulfilledOrdersQuery.style.display = 'block';
+    _unfulfilledOrdersQuery.style.display = 'grid';
 }
 
 function hideAll(){
