@@ -29,7 +29,6 @@ async function handleGetItemsClick() {
     const itemCode = _itemsQueryInput.value.trim();
     _itemsQueryInput.value = '';
     const dataArray = await getItems(parseInt(itemCode));
-    
     if(dataArray[0]){
         for(let i = 0; i < dataArray.length; i++){
             const data = dataArray[i];
@@ -56,7 +55,7 @@ async function handleGetItemsClick() {
             arr[9] = orderPercent;
 
             const row = document.createElement('tr'); 
-            for(let i = arr.length - 1; i >= 0; i++){
+            for(let j = arr.length - 1; j >= 0; j++){
                 const td = document.createElement('td');
                 td.textContent = arr[i];
                 row.appendChild(td);
