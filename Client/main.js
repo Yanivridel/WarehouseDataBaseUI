@@ -6,6 +6,7 @@ const _mainContainer = document.getElementById("mainContainer");
 // Queries
 const _queriesOptions = document.getElementById("queriesOptions");
 const _itemsQuery = document.getElementById("itemsQuery");
+const _itemsQueryInput = document.getElementById("itemsQueryInput")
 const _ordersQuery = document.getElementById("ordersQuery");
 const _regularClientsQuery = document.getElementById("regularClientsQuery");
 const _accountsQuery = document.getElementById("accountsQuery");
@@ -21,6 +22,12 @@ function handleItemsClick() {
     _queriesOptions.style.display = 'block';
     _itemsQuery.style.display = 'block';
 }
+function handleItemsQueryInputClick(){
+    const itemCode = _itemsQueryInput.value.trim();
+    _itemsQueryInput.value = '';
+    console.log(itemCode);
+}
+
 function handleOrdersClick(){
     hideAll();
     _queriesOptions.style.display = 'block';
