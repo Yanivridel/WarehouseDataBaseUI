@@ -46,7 +46,7 @@ async function handleGetItemClick() {
     console.log(data);
 }
 
-function GetExOrders(status, startDate, endDate, orderNo){
+function getExOrders(status, startDate, endDate, orderNo){
     return fetch(`${serverPath}/api/data/ExOrders`, {
         method: "PUT",
         headers: {
@@ -64,10 +64,64 @@ function GetExOrders(status, startDate, endDate, orderNo){
 }
 
 async function handleGetExOrdersClick() {
-    const data = await GetExOrders('Cancelled', '2024-08-01','2024-09-01');
+    const data = await getExOrders('Cancelled', '2024-08-01','2024-09-01');
     console.log(data);
 }
 
+function getSubCustomerOrders(custId){
+    if(isNaN(custId)) return;
+    return fetch(`${serverPath}/api/data/SubCustomerOrders`, {
+        method: "PUT",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            custId: custId
+        })
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+async function handleGetSubCustomerOrders() {
+    const data = await getSubCustomerOrders(1);
+    console.log(data);
+}
+
+function getAccountingState(date){
+    return fetch(`${serverPath}/api/data/AccountingState`, {
+        method: "PUT",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            date: date
+        })
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+async function handleGetAccountingState() {
+    const data = await getAccountingState('2024-08-21');
+    console.log(data);
+}
+
+function getUnfulfilled(date){
+    return fetch(`${serverPath}/api/data/Unfulfilled`)
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+async function handleGetUnfulfilled() {
+    const data = await getUnfulfilled();
+    console.log(data);
+}
+
+
 // handleGetItemClick();
 // handleGetExOrdersClick();
+// handleGetSubCustomerOrders()
+// handleGetAccountingState();
+// handleGetUnfulfilled()
 hideAll();
