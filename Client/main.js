@@ -16,15 +16,21 @@ function hideAll(){
     }
 }
 
-function getItems(){
+function getItems(itemCode){
     return fetch(`${serverPath}/api/data/items`, {
+        method: "PUT",
         headers: {
             "Content-Type":"application/json"
         },
+        body: JSON.stringify({
+            code: itemCode
+        })
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    //.then(data => console.log(data))
     .catch(error => console.log(error));
 }
 
+
+handleGetItemClick();
 hideAll();
