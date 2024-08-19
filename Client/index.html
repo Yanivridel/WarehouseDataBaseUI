@@ -18,7 +18,7 @@
                 </a>
                 <div class="navButtonsRow2">
                     <button onclick="handleQueriesClick()">שאילתות</button>
-                    <button onclick="handleItemHandlingClick()">טיפול&nbsp;בפריטים</button>
+                    <button>טיפול&nbsp;בפריטים</button>
                     <button>קליטת&nbsp;אספקה&nbsp;</button>
                     <button>קליטת&nbsp;אספקה&nbsp;למלאי</button>
                     <button>משלוחים</button>
@@ -45,35 +45,7 @@
                     <button>יציאה</button>
                 </div>
                 <div class="mainButtons">
-                    <button>תשלום</button>
-                    <button>נקה&nbsp;מסך</button>  
-                    <button>אישור&nbsp;קליטה</button>  
-                </div>
-            </div>
-        </div>
-
-        <div class="form" id="itemHandling">
-            <h2>טיפול בפריטים</h2>
-            <div class="dataArea">
-                <div id="action">
-                    <label for="html">מחיקה</label>
-                    <input type="radio" id="delete" name="fav_language" value="מחיקה">
-                    <label for="html">עדכון</label>
-                    <input type="radio" id="update" name="fav_language" value="עדכון">
-                    <label for="html">הוספה</label>
-                    <input type="radio" id="add" name="fav_language" value="הוספה">
-                    <p>:פעולה</p>
-                </div>
-                <div id="itemId"></div>
-                <div id="itemQuant"></div>
-                <div id="itemSupply"></div>
-            </div>
-            <div class="buttons">
-                <div class="exitDiv">
-                    <button>יציאה</button>
-                </div>
-                <div class="mainButtons">
-                    <button>תשלום</button>
+                    <button onclick="getData()">תשלום</button>
                     <button>נקה&nbsp;מסך</button>  
                     <button>אישור&nbsp;קליטה</button>  
                 </div>
@@ -132,9 +104,6 @@
             <h2>שאילתת&nbsp;לקוחות&nbsp;קבועים</h2>
             <div class="dataArea"></div>
             <div class="buttons">
-                <div class="exitDiv">
-                    <button>יציאה</button>
-                </div>
                 <div class="mainButtons">
                     <button onclick="getData()">תשלום</button>
                     <button>נקה&nbsp;מסך</button>  
