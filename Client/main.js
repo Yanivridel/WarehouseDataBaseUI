@@ -38,10 +38,36 @@ function getItems(itemCode){
         })
     })
     .then(response => response.json())
-    //.then(data => console.log(data))
     .catch(error => console.log(error));
 }
 
+async function handleGetItemClick() {
+    const data = await getItems(2);
+    console.log(data);
+}
 
-handleGetItemClick();
+function GetExOrders(status, startDate, endDate, orderNo){
+    return fetch(`${serverPath}/api/data/ExOrders`, {
+        method: "PUT",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            status: status,
+            startDate: startDate,
+            endDate: endDate,
+            orderNo: orderNo
+        })
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+async function handleGetExOrdersClick() {
+    const data = await GetExOrders('Cancelled', '2024-08-01','2024-09-01');
+    console.log(data);
+}
+
+// handleGetItemClick();
+// handleGetExOrdersClick();
 hideAll();

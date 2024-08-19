@@ -36,6 +36,28 @@ app.put('/api/data/items', (req, res) => {
     });
 });
 
+app.put('/api/data/ExOrders', (req, res) => {
+    const status = req.body.status;
+    const startDate = req.body.startDate;
+    const endDate = req.body.endDate;
+    const orderNo = req.body.orderNo;
+    console.log(status,startDate,endDate,orderNo);
+    
+    let query = 'SELECT e.OrderNo, e.Date, r.PaidAmt, ite.Code, ite.Quant, e.Status FROM ExOrders e JOIN Invoices inv ON (e.OrderNo=inv.OrderNo) JOIN Receipt r ON (inv.InvNo=r.InvNo) JOIN ItemsToExOrders ite ON (e.OrderNo=ite.OrderNo) JOIN Items i ON (ite.Code=i.Code) WHERE 1=1';
+    query += status ? ` AND e.Status = '${status}'`:'';
+    query += startDate ? ` AND e.Date > '${startDate}'`:'';
+    query += endDate ? ` AND e.Date < '${endDate}'`:'';
+    query += orderNo ? ` AND e.OrderNo = ${orderNo}`:'';
+    query += ' ORDER BY e.OrderNo;';
+    console.log(query);
+    
+    sql.query(query)
+    .then(result => res.json(result.recordset))
+    .catch(error => {
+        console.log(error);
+        res.status(500).send(`Error querying the database: ${error}`);
+    });
+});
 
 app.listen(port, () => {
     connectToDB();
