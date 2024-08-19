@@ -66,12 +66,12 @@
         
         <div class="form" id="itemsQuery">
             <h2>שאילתת&nbsp;פריטים</h2>
-            <div class="inputArea">
-                קוד פריט:
-                <input id="itemsQueryInput"></input>
-            </div>
             <div class="dataArea">
-                <table>
+                <div class="inputArea">
+                    קוד פריט:
+                    <input id="itemsQueryInput"></input>
+                </div>
+                <table id="itemsTable">
                     <tr><th>%</th> <th>ת.אספקה</th> <th>תדירות</th> <th>מחיר</th> <th>קבועות</th> <th>שמורה</th> <th>בהמתנה</th> <th>במלאי</th> <th>תיאור</th> <th>קוד</th></ht></tr>
                 </table>
             </div>
@@ -80,7 +80,7 @@
                     <button>יציאה</button>
                 </div>
                 <div class="mainButtons">
-                    <button onclick="handleItemsQueryInputClick()">הצג</button>  
+                    <button onclick="handleGetItemsClick()">הצג</button>  
                 </div>
             </div>
         </div>

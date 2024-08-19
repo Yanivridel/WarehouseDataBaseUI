@@ -5,8 +5,11 @@ const _mainContainer = document.getElementById("mainContainer");
 
 // Queries
 const _queriesOptions = document.getElementById("queriesOptions");
+
 const _itemsQuery = document.getElementById("itemsQuery");
-const _itemsQueryInput = document.getElementById("itemsQueryInput")
+const _itemsQueryInput = document.getElementById("itemsQueryInput");
+const _itemsTable = document.getElementById("itemsTable");
+
 const _ordersQuery = document.getElementById("ordersQuery");
 const _regularClientsQuery = document.getElementById("regularClientsQuery");
 const _accountsQuery = document.getElementById("accountsQuery");
@@ -20,12 +23,48 @@ function handleQueriesClick(){
 function handleItemsClick() {
     hideAll();
     _queriesOptions.style.display = 'block';
-    _itemsQuery.style.display = 'block';
+    _itemsQuery.style.display = 'grid';
 }
-function handleItemsQueryInputClick(){
+async function handleGetItemsClick() {
     const itemCode = _itemsQueryInput.value.trim();
     _itemsQueryInput.value = '';
-    console.log(itemCode);
+    const dataArray = await getItems(parseInt(itemCode));
+    
+    if(dataArray[0]){
+        for(let i = 0; i < dataArray.length; i++){
+            const data = dataArray[i];
+            const arr = [];
+            const code = data.code;
+            arr[0] = code;
+            const desc = data.desc;
+            arr[1] = desc;
+            const available = data.available; 
+            arr[2] = available;
+            const waiting = data.waiting;
+            arr[3] = waiting;
+            const saved = data.saved;
+            arr[4] = saved;
+            const subscript = data.subscript;
+            arr[5] = subscript;
+            const unitPrice = data.unitPrice;
+            arr[6] = unitPrice;
+            const freq = data.freq;
+            arr[7] = freq;
+            const suppDate = data.suppDate;
+            arr[8] = suppDate;
+            const orderPercent = data.orderPercent;
+            arr[9] = orderPercent;
+
+            const row = document.createElement('tr'); 
+            for(let i = arr.length - 1; i >= 0; i++){
+                const td = document.createElement('td');
+                td.textContent = arr[i];
+                row.appendChild(td);
+            }
+            _itemsTable.appendChild(row);
+        }
+    }
+    console.log(dataArray);
 }
 
 function handleOrdersClick(){
@@ -70,10 +109,6 @@ function getItems(itemCode){
     .catch(error => console.log(error));
 }
 
-async function handleGetItemsClick() {
-    const data = await getItems(2);
-    console.log(data);
-}
 
 function GetExOrders(status, startDate, endDate, orderNo){
     return fetch(`${serverPath}/api/data/ExOrders`, {

@@ -121,7 +121,6 @@ a {
         text-align: center;
         font-size: 2.2rem;
     }
-
     .buttons {
         grid-row: 3;
         display: grid;
