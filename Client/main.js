@@ -47,7 +47,7 @@ function getItems(itemCode){
     .catch(error => console.log(error));
 }
 
-async function handleGetItemClick() {
+async function handleGetItemsClick() {
     const data = await getItems(2);
     console.log(data);
 }
