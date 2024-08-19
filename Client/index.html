@@ -66,6 +66,72 @@
         
         <div class="form" id="itemsQuery">
             <h2>שאילתת&nbsp;פריטים</h2>
+            <div class="dataArea">
+                <div class="inputArea">
+                    קוד פריט:
+                    <input id="itemsQueryInput"></input>
+                </div>
+                <table id="itemsTable">
+                    <tr><th>%</th> <th>ת.אספקה</th> <th>תדירות</th> <th>מחיר</th> <th>קבועות</th> <th>שמורה</th> <th>בהמתנה</th> <th>במלאי</th> <th>תיאור</th> <th>קוד</th></ht></tr>
+                </table>
+            </div>
+            <div class="buttons">
+                <div class="exitDiv">
+                    <button>יציאה</button>
+                </div>
+                <div class="mainButtons">
+                    <button onclick="handleGetItemsClick()">הצג</button>  
+                </div>
+            </div>
+        </div>
+
+        <div class="form" id="ordersQuery">
+            <h2>שאילתת&nbsp;הזמנות&nbsp;לביצוע</h2>
+            <div class="dataArea"></div>
+            <div class="buttons">
+                <div class="exitDiv">
+                    <button>יציאה</button>
+                </div>
+                <div class="mainButtons">
+                    <button onclick="getData()">תשלום</button>
+                    <button>נקה&nbsp;מסך</button>  
+                    <button>אישור&nbsp;קליטה</button>  
+                </div>
+            </div>
+        </div>
+
+        <div class="form" id="regularClientsQuery">
+            <h2>שאילתת&nbsp;לקוחות&nbsp;קבועים</h2>
+            <div class="dataArea"></div>
+            <div class="buttons">
+                <div class="exitDiv">
+                    <button>יציאה</button>
+                </div>
+                <div class="mainButtons">
+                    <button onclick="getData()">תשלום</button>
+                    <button>נקה&nbsp;מסך</button>  
+                    <button>אישור&nbsp;קליטה</button>  
+                </div>
+            </div>
+        </div>
+
+        <div class="form" id="accountsQuery">
+            <h2>שאילתת&nbsp;חשבות</h2>
+            <div class="dataArea"></div>
+            <div class="buttons">
+                <div class="exitDiv">
+                    <button>יציאה</button>
+                </div>
+                <div class="mainButtons">
+                    <button onclick="getData()">תשלום</button>
+                    <button>נקה&nbsp;מסך</button>  
+                    <button>אישור&nbsp;קליטה</button>  
+                </div>
+            </div>
+        </div>
+
+        <div class="form" id="unfulfilledOrdersQuery">
+            <h2>שאילתת&nbsp;הזמנות&nbsp;שלא&nbsp;מומשו</h2>
             <div class="dataArea"></div>
             <div class="buttons">
                 <div class="exitDiv">
