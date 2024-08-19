@@ -26,6 +26,12 @@ function handleItemsClick() {
     _itemsQuery.style.display = 'grid';
 }
 async function handleGetItemsClick() {
+    const toDelete = _itemsTable.getElementsByTagName("tr");
+    for(let i = toDelete.length - 1; i > 0; i--){
+        const row = toDelete[i];
+        _itemsTable.removeChild(row);
+    }
+    
     const itemCode = _itemsQueryInput.value.trim();
     _itemsQueryInput.value = '';
     const dataArray = await getItems(parseInt(itemCode));
@@ -37,7 +43,8 @@ async function handleGetItemsClick() {
                 data.UnitPrice,data.Freq,data.SuppDate,data.OrderPercnt];
             console.log(data,arr);
             
-            const row = document.createElement('tr'); 
+            const row = document.createElement('tr');
+
             for(let j = arr.length - 1; j >= 0; j--){
                 const td = document.createElement('td');
                 console.log('arr[j]',arr[j]);
