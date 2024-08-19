@@ -52,8 +52,20 @@
             </div>
         </div>
 
-        <div class="form" id="createOrder">
-            <h2>קליטת הזמנה</h2>
+
+        <!--שאילתות-->
+        <div id="queriesOptions">
+            <div class="container">
+                <button onclick="handleItemsClick()">פריטים</button>
+                <button onclick="handleOrdersClick()">הזמנות&nbsp;לביצוע</button>  
+                <button onclick="handleRegularClientsClick()">לקוחות&nbsp;קבועים</button>
+                <button onclick="handleAccountsClick()">חשבות</button>
+                <button onclick="handleUnfulfilledOrdersClick()">הזמנות&nbsp;שלא&nbsp;מומשו</button>  
+            </div>
+        </div>
+        
+        <div class="form" id="itemsQuery">
+            <h2>שאילתת&nbsp;פריטים</h2>
             <div class="dataArea"></div>
             <div class="buttons">
                 <div class="exitDiv">
@@ -67,15 +79,6 @@
             </div>
         </div>
         
-        <div id="queriesOptions">
-            <div class="container">
-                <button>פריטים</button>
-                <button>הזמנות&nbsp;לביצוע</button>  
-                <button>לקוחות&nbsp;קבועים</button>
-                <button>חשבות</button>
-                <button>הזמנות&nbsp;שלא&nbsp;מומשו</button>  
-            </div>
-        </div>
     <hr>
     
     <footer>
