@@ -2,8 +2,14 @@
 const serverPath = 'http://localhost:5000';
 const _createOrder = document.getElementById("createOrder");
 const _mainContainer = document.getElementById("mainContainer");
+
+// Queries
 const _queriesOptions = document.getElementById("queriesOptions");
 const _itemsQuery = document.getElementById("itemsQuery");
+const _ordersQuery = document.getElementById("ordersQuery");
+const _regularClientsQuery = document.getElementById("regularClientsQuery");
+const _accountsQuery = document.getElementById("accountsQuery");
+const _unfulfilledOrdersQuery = document.getElementById("unfulfilledOrdersQuery");
 
 function handleQueriesClick(){
     hideAll();
