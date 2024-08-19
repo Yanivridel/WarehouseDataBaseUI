@@ -36,7 +36,24 @@ html {
         flex-direction: column;
     }
 }
+.container {
+    button {
+        background: linear-gradient(to bottom, var(--light-slate-blue) 20%, var(--light-royal-blue) 90%);
+        color: white;
+        font-weight: 700;
+        border: none;
+        border-radius: 2rem; 
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        padding: 0.7rem;
+        margin: 0.7rem 0.7rem;
+    }
 
+    button:hover{
+        background: linear-gradient(to bottom, var(--light-slate-blue) 20%, var(--purple) 90%);
+        transform: translateY(-2px);
+    }
+}
 
 /* HEADER */
 #headerNav {
@@ -64,23 +81,6 @@ html {
         
         .logoImg {
             margin-left: auto; /* Push to the right */
-        }
-
-        button {
-            background: linear-gradient(to bottom, var(--light-slate-blue) 20%, var(--light-royal-blue) 90%);
-            color: white;
-            font-weight: 700;
-            border: none;
-            border-radius: 2rem; 
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            padding: 0.7rem;
-            margin: 0.7rem 0.7rem;
-        }
-
-        button:hover{
-            background: linear-gradient(to bottom, var(--light-slate-blue) 20%, var(--purple) 90%);
-            transform: translateY(-2px);
         }
 
         .navButtonsRow2, .navButtonsRow3 {

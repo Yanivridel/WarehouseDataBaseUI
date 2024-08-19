@@ -29,7 +29,7 @@ function connectToDB() {
 app.use(cors());
 
 
-app.get('/api/data', (req, res) => {
+app.get('/api/data/items', (req, res) => {
     sql.query('SELECT * FROM Items')
         .then(result => res.json(result.recordset)) // Use .recordset to get the data
         .catch(error => {

@@ -17,7 +17,7 @@
                     <img src="Assets/truckImg.png">
                 </a>
                 <div class="navButtonsRow2">
-                    <button>שאילתות</button>
+                    <button onclick="handleQueriesClick()">שאילתות</button>
                     <button>טיפול&nbsp;בפריטים</button>
                     <button>קליטת&nbsp;אספקה&nbsp;</button>
                     <button>קליטת&nbsp;אספקה&nbsp;למלאי</button>
@@ -37,7 +37,7 @@
 
     <hr>
     <div id="mainContainer">
-        <div class="form">
+        <div class="form" id="createOrder">
             <h2>קליטת הזמנה</h2>
             <div class="dataArea"></div>
             <div class="buttons">
@@ -51,7 +51,31 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="form" id="createOrder">
+            <h2>קליטת הזמנה</h2>
+            <div class="dataArea"></div>
+            <div class="buttons">
+                <div class="exitDiv">
+                    <button>יציאה</button>
+                </div>
+                <div class="mainButtons">
+                    <button onclick="getData()">תשלום</button>
+                    <button>נקה&nbsp;מסך</button>  
+                    <button>אישור&nbsp;קליטה</button>  
+                </div>
+            </div>
+        </div>
+        
+        <div id="queriesOptions">
+            <div class="container">
+                <button>פריטים</button>
+                <button>הזמנות&nbsp;לביצוע</button>  
+                <button>לקוחות&nbsp;קבועים</button>
+                <button>חשבות</button>
+                <button>הזמנות&nbsp;שלא&nbsp;מומשו</button>  
+            </div>
+        </div>
     <hr>
     
     <footer>
