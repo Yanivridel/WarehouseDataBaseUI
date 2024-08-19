@@ -3,11 +3,22 @@ const serverPath = 'http://localhost:5000';
 const _createOrder = document.getElementById("createOrder");
 const _mainContainer = document.getElementById("mainContainer");
 const _queriesOptions = document.getElementById("queriesOptions");
+const _itemsQuery = document.getElementById("itemsQuery");
 
 function handleQueriesClick(){
     hideAll();
     _queriesOptions.style.display = 'block';    
 }
+
+function handleItemsClick() {
+    hideAll();
+    _queriesOptions.style.display = 'block';
+    _itemsQuery.style.display = 'block';
+}
+function handleOrdersClick(){}
+function handleRegularClientsClick(){}
+function handleAccountsClick(){}
+function handleUnfulfilledOrdersClick(){}
 
 function hideAll(){
     const children = _mainContainer.children;
