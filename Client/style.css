@@ -150,4 +150,11 @@ a {
         justify-content: space-around;
     }
 }
+
+table{
+    padding: 2rem 0;
+    width:100%;
+}
+
+
 /* END BODY */

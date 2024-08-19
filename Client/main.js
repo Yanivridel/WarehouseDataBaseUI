@@ -21,10 +21,26 @@ function handleItemsClick() {
     _queriesOptions.style.display = 'block';
     _itemsQuery.style.display = 'block';
 }
-function handleOrdersClick(){}
-function handleRegularClientsClick(){}
-function handleAccountsClick(){}
-function handleUnfulfilledOrdersClick(){}
+function handleOrdersClick(){
+    hideAll();
+    _queriesOptions.style.display = 'block';
+    _ordersQuery.style.display = 'block';
+}
+function handleRegularClientsClick(){
+    hideAll();
+    _queriesOptions.style.display = 'block';
+    _regularClientsQuery.style.display = 'block';
+}
+function handleAccountsClick(){
+    hideAll();
+    _queriesOptions.style.display = 'block';
+    _accountsQuery.style.display = 'block';
+}
+function handleUnfulfilledOrdersClick(){
+    hideAll();
+    _queriesOptions.style.display = 'block';
+    _unfulfilledOrdersQuery.style.display = 'block';
+}
 
 function hideAll(){
     const children = _mainContainer.children;
