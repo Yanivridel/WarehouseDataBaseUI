@@ -201,7 +201,36 @@ input {
     cursor: pointer;
     transition: background 0.3s;
 }
+/* QUERIES */
+#itemsQuery {
+    font-size: 1.2rem;
+    h2{
+        margin: 1rem;
+    }
+    .inputArea {
+        display:flex;
+        justify-content: right;
+        input{
+            margin:0 1rem;
+        }
+    }
+}
 
+#ordersQuery{
+    .dataArea{
+        display:grid;
+        grid-template-rows: 1fr 3fr;
+        .inputDiv{
+            margin:1rem;
+            display:flex;
+            justify-content: right;
+            input{
+                margin:1rem;
+            }
+        }
+    }
+}
+/* END QUERIES */
 
 /* END BODY */
 

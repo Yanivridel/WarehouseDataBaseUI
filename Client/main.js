@@ -5,7 +5,10 @@ const _mainContainer = document.getElementById("mainContainer");
 //HeaderButtons
 const _createOrder = document.getElementById("createOrder");
 const _itemHandling = document.getElementById("itemHandling");
+
+
 // Queries
+//const _ = document.getElementById("");
 const _queriesOptions = document.getElementById("queriesOptions");
 
 const _itemsQuery = document.getElementById("itemsQuery");
@@ -13,6 +16,11 @@ const _itemsQueryInput = document.getElementById("itemsQueryInput");
 const _itemsTable = document.getElementById("itemsTable");
 
 const _ordersQuery = document.getElementById("ordersQuery");
+const _ordersQueryInputStatus = document.getElementById("ordersQueryInputStatus");
+const _ordersQueryInputOrderNo = document.getElementById("ordersQueryInputOrderNo");
+const _ordersQueryInputStartDate = document.getElementById("ordersQueryInputStartDate");
+const _ordersQueryInputEndDate = document.getElementById("ordersQueryInputEndDate");
+
 const _regularClientsQuery = document.getElementById("regularClientsQuery");
 const _accountsQuery = document.getElementById("accountsQuery");
 const _unfulfilledOrdersQuery = document.getElementById("unfulfilledOrdersQuery");
@@ -26,7 +34,7 @@ function handleQueriesClick(){
     hideAll();
     _queriesOptions.style.display = 'block';    
 }
-
+//----------------------------ITEMS QUERY-------------------------------
 function handleItemsClick() {
     hideAll();
     _queriesOptions.style.display = 'block';
@@ -58,11 +66,41 @@ async function handleGetItemsClick() {
         }
     }
 }
+//----------------------------ITEMS QUERY END-------------------------------
+
+//----------------------------ORDERS QUERY-------------------------------
 function handleOrdersClick(){
     hideAll();
     _queriesOptions.style.display = 'block';
     _ordersQuery.style.display = 'grid';
 }
+//What if we will treat each window as an object?
+//and group in a js object all of its members, like variables and functions?
+async function handleGetExOrdersClick() {
+    const data = await getExOrders();
+    console.log(data);
+    const ordersTable = document.getElementById('ordersTable');
+    const ordersHeader = document.getElementById('ordersHeader');
+    ordersHeader.innerHTML = '';
+    
+    for(const [key, value] of Object.entries(data[0])){
+        const th = document.createElement('th');
+        th.textContent = key;
+        ordersHeader.appendChild(th);
+    }
+    for(let i = 0; i < data.length; i++){
+        const row = document.createElement('tr');
+        for(const [key ,value] of Object.entries(data[i])){
+            const td = document.createElement('td');
+            td.textContent = value;
+            row.appendChild(td);
+        }
+        ordersTable.appendChild(row);
+    }
+}
+//----------------------------ORDERS QUERY END-------------------------------
+
+
 function handleRegularClientsClick(){
     hideAll();
     _queriesOptions.style.display = 'block';
@@ -116,11 +154,6 @@ function getExOrders(status, startDate, endDate, orderNo){
     })
     .then(response => response.json())
     .catch(error => console.log(error));
-}
-
-async function handleGetExOrdersClick() {
-    const data = await getExOrders('Cancelled', '2024-08-01','2024-09-01');
-    console.log(data);
 }
 
 function getSubCustomerOrders(custId){

@@ -97,8 +97,10 @@
             <h2>שאילתת&nbsp;פריטים</h2>
             <div class="dataArea">
                 <div class="inputArea">
-                    :קוד פריט
-                    <input id="itemsQueryInput"></input>
+                    
+                        <input id="itemsQueryInput"></input>
+                        :קוד פריט
+                
                 </div>
                 <div class="scrollableContent">
                 <table id="itemsTable">
@@ -120,28 +122,38 @@
 
         <div class="form" id="ordersQuery">
             <h2>שאילתת&nbsp;הזמנות&nbsp;לביצוע</h2>
-            <div class="inputArea">
-                סטטוס הזמנה:
-                <input id=""></input>
-                <br>
-                החל מתאריך:
-                <input></input>
-                <br>
-                עד תאריך:
-                <input></input>
-                <br>
-                מספר הזמנה:
-                <input></input>
+            <div class="dataArea">
+                <div class="inputArea">
+                    <div class="inputDiv">
+                        <input id="ordersQueryInputStatus"></input>
+                        :סטטוס הזמנה
+                        
+                        <input id="ordersQueryInputOrderNo"></input>
+                        :מספר הזמנה
+                    </div>
+                
+                    <div class="inputDiv">
+                        <input id="ordersQueryInputStartDate"></input>
+                        :החל מתאריך
+                        
+                        <input id="ordersQueryInputEndDate"></input>
+                        :עד תאריך
+                    </div>
+                </div>
+                <div class="scrollableContent">
+                    <table id="ordersTable">
+                        <thead>
+                            <tr class="tableHead" id="ordersHeader"></tr>
+                        </thead>
+                        </table>
+                    </div>
             </div>
-            <div class="dataArea"></div>
             <div class="buttons">
                 <div class="exitDiv">
                     <button>יציאה</button>
                 </div>
                 <div class="mainButtons">
-                    <button onclick="getData()">תשלום</button>
-                    <button>נקה&nbsp;מסך</button>  
-                    <button>אישור&nbsp;קליטה</button>  
+                    <button onclick="handleGetExOrdersClick()">הצג</button>  
                 </div>
             </div>
         </div>
