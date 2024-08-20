@@ -206,6 +206,37 @@ async function handleGetUnfulfilled() {
     console.log(data);
 }
 
+function getItemHandlingExecute() {
+    const _add = document.getElementById("add");
+    const _update = document.getElementById("update");
+    const _delete = document.getElementById("delete");
+    const type = _delete.checked ? "delete" :  _update.checked ? "update" : "add";
+
+    let arr = _itemHandling.getElementsByTagName("input");
+    arr = Array.from(arr).filter(input => input.type === "text");
+    const inputs = {Code: arr[0].value, Desc: arr[1].value, UnitPrice: arr[2].value, Available: arr[3].value, Waiting: arr[4].value,
+        Saved: arr[5].value, Subscript: arr[6].value, Freq: arr[7].value, SuppDate: arr[8].value, OrderPercnt: arr[9].value,
+        type: type
+    };
+
+    console.log(inputs);
+
+    return fetch(`${serverPath}/api/data/ItemHandlingExecute`, {
+        method: "PUT",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify(inputs)
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+    
+}
+
+async function handleItemHandlingExecuteClick() {
+    const data = await getItemHandlingExecute();
+    console.log(data);
+}
 
 // handleGetItemClick();
 // handleGetExOrdersClick();
