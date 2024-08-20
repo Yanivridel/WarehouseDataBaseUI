@@ -211,14 +211,11 @@ function getItemHandlingExecute() {
     const _delete = document.getElementById("delete");
     const type = _delete.checked ? "delete" :  _update.checked ? "update" : "add";
 
-    let arr = _itemHandling.getElementsByTagName("input");
-    arr = Array.from(arr).filter(input => input.type === "text");
-    const inputs = {Code: arr[0].value, Desc: arr[1].value, UnitPrice: arr[2].value, Available: arr[3].value, Waiting: arr[4].value,
-        Saved: arr[5].value, Subscript: arr[6].value, Freq: arr[7].value, SuppDate: arr[8].value, OrderPercnt: arr[9].value,
-        type: type
-    };
-
-    console.log(inputs);
+    const htmlCollection = _itemHandling.getElementsByTagName("input");
+    const arr = Array.from(htmlCollection).filter(input => input.type === "text");
+    const inputs = {Code: parseInt(arr[2].value), Desc: arr[1].value, UnitPrice: parseFloat(arr[0].value), Available: parseInt(arr[6].value), Waiting: parseInt(arr[5].value),
+        Saved: parseInt(arr[4].value), Subscript: parseInt(arr[3].value), Freq: arr[9].value, SuppDate: arr[8].value, OrderPercnt: parseFloat(arr[7].value),
+        type: type };
 
     return fetch(`${serverPath}/api/data/ItemHandlingExecute`, {
         method: "PUT",
@@ -227,14 +224,21 @@ function getItemHandlingExecute() {
         },
         body: JSON.stringify(inputs)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(errorMessage => {
+                throw new Error(errorMessage);
+            });
+        }
+        else { //response ok
+            arr.forEach(input => input.value = ""); //removing all text values
+        }
+    })
     .catch(error => console.log(error));
-    
 }
 
 async function handleItemHandlingExecuteClick() {
-    const data = await getItemHandlingExecute();
-    console.log(data);
+    await getItemHandlingExecute();
 }
 
 // handleGetItemClick();
