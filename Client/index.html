@@ -53,6 +53,7 @@
         </div>
 
         
+        <!-----------------------טיפול בפריטים------------------------------>
         <div class="form" id="itemHandling">
             <h2>טיפול בפריטים</h2>
             <div class="dataArea">
@@ -62,22 +63,71 @@
                     <label for="html">עדכון</label>
                     <input type="radio" id="update" name="fav_language" value="עדכון">
                     <label for="html">הוספה</label>
-                    <input type="radio" id="add" name="fav_language" value="הוספה">
+                    <input type="radio" id="add" name="fav_language" value="הוספה" checked>
                     <p>:פעולה</p>
                 </div>
-                <div id="itemId"></div>
-                <div id="itemQuant"></div>
-                <div id="itemSupply"></div>
+                <div id="itemId" class="row">
+                    <p class="title">פרטי זיהוי</p>
+                    <div class="inputLine">
+                        <div>
+                            <input type="text" >
+                            <p>:מחיר יחידה</p>
+                        </div>
+                        <div>
+                            <input type="text" >
+                            <p>:תיאור</p>
+                        </div>
+                        <div>
+                            <input type="text" >
+                            <p>:קוד</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="itemQuant" class="row">
+                    <p class="title">כמויות</p>
+                    <div class="inputLine">
+                        <div>
+                            <input type="text" >
+                            <p>:במלאי</p>
+                        </div>
+                        <div>
+                            <input type="text" >
+                            <p>:בהמתנה</p>
+                        </div>
+                        <div>
+                            <input type="text" >
+                            <p>:שמורה</p>
+                        </div>
+                        <div>
+                            <input type="text" >
+                            <p>:קבועות</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="itemSupply" class="row">
+                    <p class="title">אספקה למלאי</p>
+                    <div class="inputLine">
+                        <div>&nbsp;
+                            <input type="text" >
+                            <p>:תדירות&nbsp;אספקה</p>
+                        </div>
+                        <div>
+                            <input type="text" >
+                            <p>:ת. הבא</p>
+                        </div>
+                        <div>
+                            <input type="text" >
+                            <p>:אחוז</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="buttons">
                 <div class="exitDiv">
                     <button>יציאה</button>
                 </div>
                 <div class="mainButtons">
-                    <button>תשלום</button>
-                    <button onclick="getData()">תשלום</button>
-                    <button>נקה&nbsp;מסך</button>  
-                    <button>אישור&nbsp;קליטה</button>  
+                    <button onclick="handleItemHandlingExecuteClick()">ביצוע</button> 
                 </div>
             </div>
         </div>

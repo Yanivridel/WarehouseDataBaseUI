@@ -148,14 +148,14 @@ a {
     grid-template-rows: 1fr 2fr 2fr 2fr;
     margin-bottom: 1rem;
     #itemId, #itemQuant, #itemSupply {
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+        border: 1px solid black;
+        border-top: 0 none;
     }
 
     #action {
         display: flex;
         justify-content: flex-end;
+        border-bottom: 1px solid black;
         
         p, label {
             font-size: 1.4rem;
@@ -164,8 +164,39 @@ a {
         }
     }
 
+    .row {
+        padding: 1rem;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        font-size: 1.3rem;
+    
+        .title {
+            margin-left: auto;
+            width: fit-content;
+            height: fit-content;
+        }
+        div {
+            display: flex;
+            justify-content: space-around;
+            input {
+                padding: 0.5rem;
+                width: 40%;
+                height: 40%;
+                margin: auto;
+            }
+        }
+        p {
+            margin: auto 5px;
+        }
+    }
+
+    
+    #itemId {
+
+    }
+
     #itemSupply {
-        border-bottom: 1px solid black;
+
     }
 }
 
@@ -201,8 +232,6 @@ input {
     cursor: pointer;
     transition: background 0.3s;
 }
-
-
 /* END BODY */
 
 @media(max-width:375px){
