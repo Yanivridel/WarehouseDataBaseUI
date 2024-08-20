@@ -106,31 +106,31 @@ app.get('/api/data/Unfulfilled', (req, res) => {
     });
 });
 
-app.put('/api/data/ItemHandlingExecute', (req, res) => {
-    const inputs = req.body;
-    console.log(inputs);
-    let query = '';
-    if(inputs.type === "add"){
-        query+= `INSERT INTO Items VALUES (${inputs.Code},${inputs.Desc},${inputs.UnitPrice},${inputs.Available},
-    ${inputs.Waiting},${inputs.Saved},${inputs.Subscript},${inputs.Freq},${inputs.SuppDate},${inputs.OrderPercnt});`
-    }
-    else if(inputs.type === "update"){
-        query+= `UPDATE Items SET`
-        query+= ` desc,unitPrice,avliable,saved,waiting,subscript,freq,suppdate,orderpercnt`
+// app.put('/api/data/ItemHandlingExecute', (req, res) => {
+//     const inputs = req.body;
+//     console.log(inputs);
+//     let query = '';
+//     if(inputs.type === "add"){
+//         query+= `INSERT INTO Items VALUES (${inputs.Code},${inputs.Desc},${inputs.UnitPrice},${inputs.Available},
+//     ${inputs.Waiting},${inputs.Saved},${inputs.Subscript},${inputs.Freq},${inputs.SuppDate},${inputs.OrderPercnt});`
+//     }
+//     else if(inputs.type === "update"){
+//         query+= `UPDATE Items SET`
+//         query+= ` desc,unitPrice,avliable,saved,waiting,subscript,freq,suppdate,orderpercnt`
 
-        query+= ` WHERE Code = ${inputs.Code}`;
-WHERE code = 5;`
-    }
-    else if(!inputs.Waiting && !inputs.Saved && !inputs.Subscript){ //delete
-        query+= `DELETE FROM Items WHERE code = ${inputs.Code};`
-    }
-    sql.query(`SELECT * FROM Items`)
-    .then(result => res.json(result.recordset))
-    .catch(error => {
-        console.log(error);
-        res.status(500).send(`Error querying the database: ${error}`);
-    });
-});
+//         query+= ` WHERE Code = ${inputs.Code}`;
+// WHERE code = 5;`
+//     }
+//     else if(!inputs.Waiting && !inputs.Saved && !inputs.Subscript){ //delete
+//         query+= `DELETE FROM Items WHERE code = ${inputs.Code};`
+//     }
+//     sql.query(`SELECT * FROM Items`)
+//     .then(result => res.json(result.recordset))
+//     .catch(error => {
+//         console.log(error);
+//         res.status(500).send(`Error querying the database: ${error}`);
+//     });
+// });
 
 app.listen(port, () => {
     connectToDB();
