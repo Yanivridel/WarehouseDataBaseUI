@@ -124,7 +124,7 @@ a {
         font-size: 2.2rem;
     }
     .buttons {
-        grid-row: 4;
+        grid-row: 3;
         display: grid;
         grid-template-columns: 1fr 6fr;
 
@@ -177,13 +177,11 @@ a {
         justify-content: space-around;
     }
 }
-/* .dataArea{
-    max-height: 100%;
-    overflow-y: auto;
-} */
 
 .scrollableContent{
-    height: 200px;
+    margin: 2rem 0;
+    max-height: 300px;
+    width: 100%;
     overflow-y: auto;
 }
 table{
@@ -206,3 +204,7 @@ input {
 
 
 /* END BODY */
+
+@media(max-width:375px){
+
+}
