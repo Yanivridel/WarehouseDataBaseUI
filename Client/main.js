@@ -6,7 +6,6 @@ const _mainContainer = document.getElementById("mainContainer");
 const _createOrder = document.getElementById("createOrder");
 const _itemHandling = document.getElementById("itemHandling");
 
-
 // Queries
 //const _ = document.getElementById("");
 const _queriesOptions = document.getElementById("queriesOptions");
