@@ -19,17 +19,17 @@
                 <div class="navButtonsRow2">
                     <button onclick="handleQueriesClick()">שאילתות</button>
                     <button onclick="handleItemHandlingClick()">טיפול&nbsp;בפריטים</button>
-                    <button>קליטת&nbsp;אספקה&nbsp;</button>
-                    <button>קליטת&nbsp;אספקה&nbsp;למלאי</button>
-                    <button>משלוחים</button>
-                    <button>עדכון&nbsp;פרטי&nbsp;לקוח&nbsp;קבוע</button>
+                    <button class="disabled" >קליטת&nbsp;אספקה&nbsp;</button>
+                    <button class="disabled" >קליטת&nbsp;אספקה&nbsp;למלאי</button>
+                    <button class="disabled" >משלוחים</button>
+                    <button class="disabled" >עדכון&nbsp;פרטי&nbsp;לקוח&nbsp;קבוע</button>
                 </div>
                 <div class="navButtonsRow3">
-                    <button>קליטת&nbsp;הזמנה&nbsp;קבועה</button>
-                    <button>קליטת&nbsp;לקוח&nbsp;קבוע</button>
-                    <button>תשלום</button>
-                    <button>עדכון/ביטול&nbsp;הזמנה</button>
-                    <button>קליטת&nbsp;הזמנה</button>
+                    <button class="disabled" >קליטת&nbsp;הזמנה&nbsp;קבועה</button>
+                    <button class="disabled" >קליטת&nbsp;לקוח&nbsp;קבוע</button>
+                    <button class="disabled" >תשלום</button>
+                    <button class="disabled" >עדכון/ביטול&nbsp;הזמנה</button>
+                    <button class="disabled" >קליטת&nbsp;הזמנה</button>
                 </div>
             </div>
         </nav>
@@ -136,10 +136,10 @@
         <div id="queriesOptions">
             <div class="container">
                 <button onclick="handleItemsClick()">פריטים</button>
-                <button onclick="handleOrdersClick()">הזמנות&nbsp;לביצוע</button>  
-                <button onclick="handleRegularClientsClick()">לקוחות&nbsp;קבועים</button>
-                <button onclick="handleAccountsClick()">חשבות</button>
-                <button onclick="handleUnfulfilledOrdersClick()">הזמנות&nbsp;שלא&nbsp;מומשו</button>  
+                <button onclick="handleOrdersClick()">הזמנות&nbsp;לביצוע</button>
+                <button class="disabled" onclick="handleRegularClientsClick()">לקוחות&nbsp;קבועים</button>
+                <button class="disabled" onclick="handleAccountsClick()">חשבות</button>
+                <button class="disabled" onclick="handleUnfulfilledOrdersClick()">הזמנות&nbsp;שלא&nbsp;מומשו</button>
             </div>
         </div>
         

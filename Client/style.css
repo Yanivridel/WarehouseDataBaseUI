@@ -275,3 +275,8 @@ input {
 @media(max-width:375px){
 
 }
+
+
+#headerNav .disabled, #mainContainer .disabled {
+    background: rgb(90, 88, 88);
+}

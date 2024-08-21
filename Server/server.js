@@ -44,8 +44,8 @@ app.put('/api/data/ExOrders', (req, res) => {
 
     let query = 'SELECT e.OrderNo, e.Date, r.PaidAmt, ite.Code, ite.Quant, e.Status FROM ExOrders e JOIN Invoices inv ON (e.OrderNo=inv.OrderNo) JOIN Receipt r ON (inv.InvNo=r.InvNo) JOIN ItemsToExOrders ite ON (e.OrderNo=ite.OrderNo) JOIN Items i ON (ite.Code=i.Code) WHERE 1=1';
     query += status ? ` AND e.Status = '${status}'`:'';
-    query += startDate ? ` AND e.Date > '${startDate}'`:'';
-    query += endDate ? ` AND e.Date < '${endDate}'`:'';
+    query += startDate ? ` AND e.Date >= '${startDate}'`:'';
+    query += endDate ? ` AND e.Date <= '${endDate}'`:'';
     query += orderNo ? ` AND e.OrderNo = ${orderNo}`:'';
     query += ' ORDER BY e.OrderNo;';
 
