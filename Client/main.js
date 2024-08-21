@@ -90,8 +90,7 @@ async function handleGetExOrdersClick() {
     const dataArray = await getExOrders(orderStatus, startDate, endDate, orderNo);
     console.log(dataArray[0]);
     const columnNames = ['קוד','תאריך','מספר הזמנה','סכום ששולם','כמות','סטטוס הזמנה'];
-    //to add:
-    //Then add the data rows.
+    
     const thead = document.createElement('thead');
     const header = document.createElement('tr');
     for(let i = 0; i < columnNames.length; i++){
