@@ -43,7 +43,7 @@ async function handleGetItemsClick() {
     const toDelete = _itemsTable.getElementsByTagName("tr");
     for(let i = toDelete.length - 1; i > 0; i--){
         const row = toDelete[i];
-        //_itemsTable.removeChild(row);
+        _itemsTable.removeChild(row);
     }
     
     const itemCode = _itemsQueryInput.value.trim();
@@ -76,25 +76,44 @@ function handleOrdersClick(){
 //What if we will treat each window as an object?
 //and group in a js object all of its members, like variables and functions?
 async function handleGetExOrdersClick() {
-    const data = await getExOrders();
-    console.log(data);
     const ordersTable = document.getElementById('ordersTable');
-    const ordersHeader = document.getElementById('ordersHeader');
-    ordersHeader.innerHTML = '';
     
-    for(const [key, value] of Object.entries(data[0])){
-        const th = document.createElement('th');
-        th.textContent = key;
-        ordersHeader.appendChild(th);
+    while(ordersTable.hasChildNodes && ordersTable.firstChild){
+        ordersTable.firstChild.remove();
     }
-    for(let i = 0; i < data.length; i++){
-        const row = document.createElement('tr');
-        for(const [key ,value] of Object.entries(data[i])){
-            const td = document.createElement('td');
-            td.textContent = value;
-            row.appendChild(td);
+    
+    const orderNo = parseInt(_ordersQueryInputOrderNo.value.trim());
+    const orderStatus = _ordersQueryInputStatus.value.trim();
+    const startDate = _ordersQueryInputStartDate.value.trim();
+    const endDate = _ordersQueryInputEndDate.value.trim();
+
+    const dataArray = await getExOrders(orderStatus, startDate, endDate, orderNo);
+    console.log(dataArray[0]);
+    const columnNames = ['קוד','תאריך','מספר הזמנה','סכום ששולם','כמות','סטטוס הזמנה'];
+    //to add:
+    //Then add the data rows.
+    const thead = document.createElement('thead');
+    const header = document.createElement('tr');
+    for(let i = 0; i < columnNames.length; i++){
+        const th = document.createElement('th');
+        th.textContent = columnNames[i];
+        header.appendChild(th);
+    }
+    thead.appendChild(header);
+    ordersTable.appendChild(thead);
+    if(dataArray[0]){
+        for(let i = 0; i < dataArray.length; i++){
+            const data = dataArray[i];
+            const arr = [data.Code, data.Date, data.OrderNo, data.PaidAmt, data.Quant, 
+                data.Status];
+            const row = document.createElement('tr');
+            for(let j = 0; j < arr.length; j++){
+                const td = document.createElement('td');
+                td.textContent = arr[j];
+                row.appendChild(td);
+            }
+            ordersTable.appendChild(row);
         }
-        ordersTable.appendChild(row);
     }
 }
 //----------------------------ORDERS QUERY END-------------------------------

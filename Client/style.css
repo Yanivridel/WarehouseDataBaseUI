@@ -228,6 +228,9 @@ table thead{
     background-color: var(--formBackground);
     border:1px solid var(--fieldBorder);
 }
+table td{
+    text-align: center;
+}
 input {
     cursor: pointer;
     transition: background 0.3s;
