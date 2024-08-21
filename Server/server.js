@@ -106,31 +106,36 @@ app.get('/api/data/Unfulfilled', (req, res) => {
     });
 });
 
-// app.put('/api/data/ItemHandlingExecute', (req, res) => {
-//     const inputs = req.body;
-//     console.log(inputs);
-//     let query = '';
-//     if(inputs.type === "add"){
-//         query+= `INSERT INTO Items VALUES (${inputs.Code},${inputs.Desc},${inputs.UnitPrice},${inputs.Available},
-//     ${inputs.Waiting},${inputs.Saved},${inputs.Subscript},${inputs.Freq},${inputs.SuppDate},${inputs.OrderPercnt});`
-//     }
-//     else if(inputs.type === "update"){
-//         query+= `UPDATE Items SET`
-//         query+= ` desc,unitPrice,avliable,saved,waiting,subscript,freq,suppdate,orderpercnt`
-
-//         query+= ` WHERE Code = ${inputs.Code}`;
-// WHERE code = 5;`
-//     }
-//     else if(!inputs.Waiting && !inputs.Saved && !inputs.Subscript){ //delete
-//         query+= `DELETE FROM Items WHERE code = ${inputs.Code};`
-//     }
-//     sql.query(`SELECT * FROM Items`)
-//     .then(result => res.json(result.recordset))
-//     .catch(error => {
-//         console.log(error);
-//         res.status(500).send(`Error querying the database: ${error}`);
-//     });
-// });
+app.put('/api/data/ItemHandlingExecute', (req, res) => {
+    const inputs = req.body;
+    let query = '';
+    
+    if(inputs.type === "add"){
+        query+= `INSERT INTO Items VALUES (${inputs.Code},'${inputs.Desc}',${inputs.UnitPrice},${inputs.Available},
+    ${inputs.Waiting},${inputs.Saved},${inputs.Subscript},'${inputs.Freq}','${inputs.SuppDate}',${inputs.OrderPercnt});`
+    }
+    else if(inputs.type === "update"){
+        const setClause  = [];
+        for(const [key,value] of Object.entries(inputs)){
+            if(value && !['Code','type'].includes(key)){
+                if(['Desc','Freq','SuppDate'].includes(key))
+                    setClause.push(`[${key}] = '${value}'`);
+                else
+                setClause.push(`[${key}] = ${value}`);
+            }
+        }
+        query+= `UPDATE Items SET ${setClause.join(",")} WHERE Code = ${inputs.Code};`;
+    }
+    else if(!inputs.Waiting && !inputs.Saved && !inputs.Subscript){ //delete
+        query+= `DELETE FROM Items WHERE Code = ${inputs.Code};`;
+    }
+    sql.query(query)
+    .then(result => res.json(result.recordset))
+    .catch(error => {
+        console.log(error);
+        res.status(500).send(`Error querying the database: ${error}`);
+    });
+});
 
 app.listen(port, () => {
     connectToDB();
