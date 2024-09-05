@@ -213,7 +213,7 @@ app.makeString = (num) => {
 app.post('/baba', (req,res) => {
     const id = req.body.id;
     try{
-        res.json({msg: id});
+        res.json({id: id});
     }
     catch (err) {
         console.error('SQL error', err);
@@ -221,8 +221,22 @@ app.post('/baba', (req,res) => {
     }
 });
 
+app.put('/baba/put', (req,res) => {
+    const { name, msg } = req.body;
+    try {
+        if(!name || !msg) {
+            res.status(400).send("Missing required field");
+            return;
+        }
+        res.send(`Hello ${name}!, ${msg}`);
+    } catch(err) {
+        console.log("Error:" ,err);
+        res.status(500).send('Server Error');
+    }
+});
+
 app.listen(port, () => {
-    connectToDB();
+    // connectToDB();
     console.log(`The server has started listening on port ${port}...`);
 });
 
