@@ -3,10 +3,11 @@ const sql = require('mssql');
 const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
-const { log } = require('console');
 const app = express();
 const config = JSON.parse(fs.readFileSync('./config.txt', 'utf-8'));
 const port = 5000;
+const axios = require('axios');
+const base_url = 'https://simple-grocery-store-api.glitch.me';
 
 
 function connectToDB() {
@@ -19,10 +20,8 @@ function connectToDB() {
     }
 }
 
-
 app.use(cors());
 app.use(express.json());
-
 
 app.put('/api/data/items', (req, res) => {
     const code = req.body.code;
@@ -137,7 +136,94 @@ app.put('/api/data/ItemHandlingExecute', (req, res) => {
     });
 });
 
+// Israel API axios grocery shop //
+let carts = {},cartId;
+
+app.post('/grocery/getAllProducts', (req,res) => {
+    const { category, available, results } = req.body;
+
+    let url = base_url + '/products?';    
+    url += category ? 'category=' + category: ""; url += "&"
+    url += available ? 'available=' + available: ""; url += "&"
+    url += results ? 'results=' + results: "";
+
+    axios.get(url)
+    .then(response => response.data)
+    .then(data => res.send(data))
+    .catch(error => {
+        console.error('Error making API request:', error.message);
+    });
+});
+
+app.get('/grocery/createCart', (req,res) =>{
+    axios.post(base_url + '/carts')
+    .then(response => response.data)
+    .then(data => {
+        cartId = data.cartId
+        carts[cartId] = [];
+        console.log(carts);
+        res.send(data);
+    })
+    .catch(error => {
+        console.error('Error making API request:', error.message);
+    });
+});
+
+app.post('/grocery/addProdToCartByID', (req,res) =>{
+    const { productId, quantity } = req.body;
+    axios.post(base_url + '/carts/' + cartId + '/items',
+        {
+            "productId":productId,
+            "quantity": quantity
+        }
+    )
+    .then(response => response.data)
+    .then(data => {
+        carts[cartId].push(data.itemId);
+        console.log(carts);
+        res.send(data)
+    })
+    .catch(error => {
+        console.error('Error making API request:', error.message);
+    });
+});
+
+
+// ISRAEL TESTS
+app.get('/data', async (req,res) => {
+    try{
+        res.json({msg: "Hello, from sasha"});
+    }
+    catch (err) {
+        console.error('SQL error', err);
+        res.status(500).send('Server Error');
+    }
+});
+
+app.add = function() {return 'success'};
+
+app.sum = (a,b) =>{
+    return a + b;
+}
+
+app.makeString = (num) => {
+    return `${num}`;
+}
+
+app.post('/baba', (req,res) => {
+    const id = req.body.id;
+    try{
+        res.json({msg: id});
+    }
+    catch (err) {
+        console.error('SQL error', err);
+        res.status(500).send('Server Error');
+    }
+});
+
 app.listen(port, () => {
     connectToDB();
     console.log(`The server has started listening on port ${port}...`);
 });
+
+module.exports = app;
